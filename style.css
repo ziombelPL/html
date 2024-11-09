@@ -1,3 +1,16 @@
+@keyframes color-change {
+  0% {
+    color: red;
+  }
+
+  50% {
+    color: blue;
+  }
+
+  100% {
+    color: red;
+  }
+}
 body {
     font-family: Arial,  sans-serif; 
     font-size: 11px; 
@@ -14,6 +27,9 @@ h1 {
     margin-right: 20px;
     margin-left: 20px;
     animation: color-change 3s infinite;
+}
+h2:hover {
+  animation: color-change 3s infinite;
 }
 
 .container {
@@ -38,16 +54,7 @@ h1 {
     background-color: rgb(123, 123, 202);
     border-radius: 5cap;
 }
-@keyframes color-change {
-    0% {
-      color: blue;
-    }
-
-    50% {
-      color: red;
-    }
-
-    100% {
-      color: blue;
-    }
+p:hover{
+  color: red;
+  transition: all 1.5s;
 }
