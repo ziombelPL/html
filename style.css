@@ -1,0 +1,53 @@
+body {
+    font-family: Arial,  sans-serif; 
+    font-size: 11px; 
+    background-color: #f00000; 
+    color: #333333; 
+    text-align: center;
+}
+h1 {
+    color: #00a800;
+    background-color: yellow;
+    font-size: 24px; 
+    font-family: Georgia, serif;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    animation: color-change 3s infinite;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.block {
+    margin-top: 100px;
+    border-left: 5px solid rgb(0, 0, 0); 
+    width: 33%; 
+    height: 500px;
+    border-right: 5px solid rgb(0, 0, 0); 
+    background-color: rgb(123, 123, 202);
+    border-radius: 5cap;
+}
+.block1 {
+    border-left: 5px solid rgb(0, 0, 0); 
+    width: 33%; 
+    height: 700px;
+    border-right: 5px solid rgb(0, 0, 0); 
+    background-color: rgb(123, 123, 202);
+    border-radius: 5cap;
+}
+@keyframes color-change {
+    0% {
+      color: blue;
+    }
+
+    50% {
+      color: red;
+    }
+
+    100% {
+      color: blue;
+    }
+}
