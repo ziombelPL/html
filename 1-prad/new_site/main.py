@@ -1,21 +1,20 @@
 # Import
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
 
 def result_calculate(size, lights, device):
-# Zmienne umożliwiające obliczenie poboru energii przez urządzenia
+    # Zmienne umożliwiające obliczenie poboru energii przez urządzenia
     home_coef = 100
     light_coef = 0.04
     devices_coef = 5   
     return size * home_coef + lights * light_coef + device * devices_coef 
-    
+
 # Pierwsza strona
 @app.route('/')
 def index():
     return render_template('index.html')
-
 # Druga strona
 @app.route('/<size>')
 def lights(size):
@@ -28,7 +27,7 @@ def lights(size):
 @app.route('/<size>/<lights>')
 def electronics(size, lights):
     return render_template(
-                            'electronics.html',
+                            'electronics.html',                           
                             size = size, 
                             lights = lights                           
                            )
@@ -42,4 +41,38 @@ def end(size, lights, device):
                                                     int(device)
                                                     )
                         )
+# Formularz
+@app.route('/form')
+def form():
+    return render_template('form.html')
+
+# Wyniki formularza
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    
+
+    # Zadeklaruj zmienne do gromadzenia danych
+    name = request.form['name']
+    mail = request.form['mail']
+    adres = request.form['address']
+    date = request.form['date']
+
+    print("Przekazane dane:")
+    print(name)
+    print(mail)
+    print(adres)
+    print(date)
+
+    with open('form.txt', 'a',) as f:
+        f.write(name+'\n'+mail+'\n'+adres+'\n'+date+'\n')
+
+    # Możesz zapisać swoje dane lub wysłać je e-mailem
+    return render_template('form_result.html', 
+                           # Umieść tutaj zmienne
+                           name=name,
+                           mail=mail,
+                           adres=adres,
+                           date=date
+                           )
+
 app.run(debug=True)
